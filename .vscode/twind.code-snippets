@@ -1,0 +1,10 @@
+{
+  "Twind classes": {
+    "scope": "javascriptreact,typescriptreact",
+    "prefix": "tw",
+    "body": [
+      "class={tw`$1`}"
+    ],
+    "description": "Twind classes"
+  }
+}
