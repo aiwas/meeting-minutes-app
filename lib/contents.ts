@@ -2,7 +2,7 @@ import * as path from "std/path/mod.ts";
 import mattter from "gray-matter";
 import * as dateFns from "date-fns";
 import { ja } from "date-fns/locale";
-import { mdToHtml } from "@/lib/markdownIt.ts";
+import { mdToHtmlGf } from "@/lib/markdownIt.ts";
 
 /**
  * 記事
@@ -34,12 +34,7 @@ export interface Article {
 /**
  * 記事概要
  */
-export type ArticleSummary = Pick<Article, "filename" | "title" | "date" | "begin" | "end">;
-// export interface ArticleSummary {
-//     filename: string;
-//     title: string;
-//     datetime: string;
-// }
+export type ArticleSummary = Pick<Article, "filename" | "title" | "date" | "begin">;
 
 const contentsDir = "contents";
 const contentExt = ".md";
@@ -63,7 +58,6 @@ export async function getAllArticles(): Promise<ArticleSummary[]> {
                 title: meta["title"] as string ?? "",
                 date: dateFns.format(new Date(meta["date"] ?? 0), "yyyy/MM/dd"),
                 begin: meta["begin"] as string ?? "",
-                end: meta["end"] as string ?? "",
             });
         }
     }
@@ -89,7 +83,7 @@ export async function getArticle(filename: string): Promise<Article> {
         end: meta["end"] ?? "",
         clerical: meta["clerical"] ?? "",
         attendees: meta["attendees"],
-        body: mdToHtml(body),
+        body: mdToHtmlGf(body),
         lastUpdate: dateFns.format((await Deno.stat(filePath)).mtime!, "yyy/MM/dd HH:mm:ss"),
     } as Article;
 }

@@ -15,12 +15,16 @@ sheet.reset();
 setup({ ...config, sheet });
 
 function render(ctx: RenderContext, render: InnerRenderFunction) {
+  // twind
   const snapshot = ctx.state.get("twind") as unknown[] | null;
   sheet.reset(snapshot || undefined);
   render();
   ctx.styles.splice(0, ctx.styles.length, ...(sheet).target);
   const newSnapshot = sheet.reset();
   ctx.state.set("twind", newSnapshot);
+
+  // lang
+  ctx.lang = "ja";
 }
 
 await start(manifest, { render });

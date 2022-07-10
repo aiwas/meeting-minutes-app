@@ -11,6 +11,7 @@
     "twind/": "https://esm.sh/twind@0.16.17/",
     "markdown-it": "https://esm.sh/markdown-it@13.0.1",
     "gray-matter": "https://esm.sh/gray-matter@4.0.3",
+    "gfm": "https://deno.land/x/gfm@0.1.20/mod.ts",
     "date-fns": "https://esm.sh/date-fns@2.28.0",
     "date-fns/locale": "https://esm.sh/date-fns@2.28.0/locale"
   }
